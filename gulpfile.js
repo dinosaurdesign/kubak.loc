@@ -5,16 +5,20 @@ var gulp = require('gulp'),
     sourcemaps = require('gulp-sourcemaps'),
     concat = require('gulp-concat'),
     browsersync = require('browser-sync'),
-    watch = require('gulp-watch');
+    watch = require('gulp-watch'),
+    pug = require('gulp-pug'),
+    plumber = require('gulp-plumber');
 //переменные путей
 var path = {
     src: {
+        pug: 'src/pug/pages',
         html: 'src/*.html',
         css: 'src/css/',
         sass: 'src/sass/**/*.*',
         js: 'src/js/**/*.*'
     },
     dist: {
+        pug: 'src/pug/*.*',
         css: 'src/css/',
         sass: 'src/sass/*/*.*',
         js: 'src/js/*/*.*'
@@ -41,4 +45,17 @@ gulp.task('watch', ['browsersync', 'sass'], function () {
     gulp.watch(path.src.css, ['sass']); // Наблюдение за sass файлами в папке sass
     gulp.watch(path.src.html, browsersync.reload); // Наблюдение за HTML файлами в корне проекта
 });
+
+gulp.task('pug', function() {
+    return gulp.src(path.src.pug)
+        .pipe(plumber())
+        .pipe(pug({
+            pretty: true
+        }))
+        // .on("error", notify.onError(function(error) {
+        //     return "Message to the notifier: " + error.message;
+        // }))
+        .pipe(gulp.dest(path.dist.pug));
+});
+
 
