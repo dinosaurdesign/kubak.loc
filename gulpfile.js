@@ -32,6 +32,7 @@ gulp.task('sass', function () {// компиляция sass
         .pipe(autoprefixer(['last 15 versions', '> 1%', 'ie 8', 'ie 7'], {cascade: true})) // Создаем префиксы
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest(path.src.css)) // Выгружаем результата в папку
+        .pipe(browsersync.reload({stream: true})) // Обновляем CSS на странице при изменении
 });
 gulp.task('browsersync', function () {
     browsersync({
@@ -40,9 +41,10 @@ gulp.task('browsersync', function () {
         },
         notify: false
     });
+
 });
 gulp.task('watch', ['browsersync', 'sass'], function () {
-    gulp.watch(path.src.css, ['sass']); // Наблюдение за sass файлами в папке sass
+    gulp.watch(path.src.sass, ['sass']); // Наблюдение за sass файлами в папке sass
     gulp.watch(path.src.html, browsersync.reload); // Наблюдение за HTML файлами в корне проекта
 });
 
