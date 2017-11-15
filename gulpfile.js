@@ -6,6 +6,9 @@ var gulp = require('gulp'),
     concat = require('gulp-concat'),
     browsersync = require('browser-sync'),
     watch = require('gulp-watch'),
+    ftp  =  require('gulp-ftp'),
+    gutil    =   require('gulp-util'),
+    changed = require ('gulp-changed'),
     pug = require('gulp-pug'),
     plumber = require('gulp-plumber');
 //переменные путей
@@ -60,4 +63,16 @@ gulp.task('pug', function() {
         .pipe(gulp.dest(path.dist.pug));
 });
 
+gulp.task('ftp', function () {
+    return gulp.src('src/*')
+        .pipe(ftp({
+            host: 'ftp.dds.by/kubak.by',
+            user: 'ddsby',
+            pass: 'ooqu9Uiv'
+        }))
+        // you need to have some kind of stream after gulp-ftp to make sure it's flushed
+        // this can be a gulp plugin, gulp.dest, or any kind of stream
+        // here we use a passthrough stream
+        .pipe(gutil.noop());
+});
 

@@ -1,6 +1,9 @@
 header
+  display: block
+  position: relative
   height: 100vh
   overflow: hidden
+  padding-top: 1.5vh
   nav
     border: 1px red solid
     height: 10vh
@@ -9,15 +12,20 @@ header
       .head_logo
         display: block
         position: relative
+        height: 100px
         margin: 0
         padding: 0
         a
           img
+            display: block
+            position: relative
+            margin: 0
+            padding: 0
+            height: 100px
 
-            max-width: 100px
       .nav
         margin: 0
-        padding: 0 35px
+        padding: 20px 35px
         ul
           margin: 0
           padding: 0
@@ -27,14 +35,22 @@ header
             &:first-child
               padding-left: 0
             a
+              color: $menu_text
               text-decoration: none
+              font-size: 1rem
             &:hover
-        .social_head
-          padding-top: 10px
-          ul
-            li
-              a
-        .head_login
+      .social_head
+        padding-top: 10px
+        ul
+          li
+            padding-left: 15px
+            a
+      .head_login
+        padding-top: 20px
+        text-align: center
+        a
+          color: $menu_text
+          font-size: 1rem
+
 #main_carousel
   height: 90vh
-  overflow: hidden
