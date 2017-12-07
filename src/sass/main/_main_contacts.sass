@@ -1,0 +1,41 @@
+#contacts>
+  h2
+  div.row
+    align-items: flex-start
+    div.col
+      padding-left: 10%
+      h3
+        margin: 50px 0 50px
+      p
+        display: block
+        margin: 0 auto
+        text-align: left
+        a
+          color: $color_link
+          text-decoration: none
+          &:hover
+            color: #000
+#formMain
+  display: flex
+  flex-direction: column
+  width: 60%
+  input[type='email'], input[type='text'], input[type='Tel']
+    width: 100%
+    padding: 1px 1px 1px 5px
+    margin: 7px
+    align-self: center
+  textarea
+    width: 100%
+    padding: 1px 1px 1px 5px
+    margin: 7px
+    align-self: center
+  input[type='submit']
+    margin-top: 10px
+    width: 100px
+    align-self: flex-end
+    background: none
+    border: 1px solid #555555
+    color: #555555
+    &:hover
+      background-color: #555555
+      color: #fff
